@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&amp;family=Jost:wght@300;400;500&amp;display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{margin:0;background:#F6F2EB;color:#1b1a18;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;}
+a{text-decoration:none;color:inherit;transition:color .35s ease,background .4s ease,opacity .35s ease,border-color .35s ease;}
+a:hover{color:#4f938a;}
+button{font-family:inherit;cursor:pointer;}
+::selection{background:#cfe6e1;color:#1b1a18;}
+@media (max-width:640px){.col-sunce-copy{padding-left:0 !important;margin-top:-22px;}.pogledaj-btn{display:none !important;}}
+</style>
+</helmet>
+<template id="__bundler_thumbnail">
+<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><rect width="100" height="100" fill="#4f938a"/><g transform="translate(50,50)"><path d="M-30 0 Q0 -22 30 0 Q0 22 -30 0 Z" fill="none" stroke="#F6F2EB" stroke-width="3.5"/><circle r="9" fill="#F6F2EB"/><circle r="4" fill="#1b1a18"/></g></svg>
+</template>
+
+<div style="overflow-x:hidden;">
+
+<nav data-nav="" style="position:fixed;top:0;left:0;right:0;z-index:50;display:flex;justify-content:center;padding:16px clamp(20px,4vw,44px);background:transparent;border-bottom:1px solid transparent;transition:background .45s ease,border-color .45s ease,backdrop-filter .45s ease;">
+  <div style="display:flex;align-items:center;justify-content:space-between;gap:24px;width:100%;max-width:1120px;">
+  <a href="#pocetna" style="display:flex;align-items:center;"><img src="assets/logo.png" alt="Optika dr Vesna Milosević" style="height:clamp(46px,6vw,60px);width:auto;display:block;"></a>
+  <sc-if value="{{ notMobile }}" hint-placeholder-val="{{ true }}">
+    <div style="display:flex;align-items:center;gap:clamp(12px,1.5vw,26px);">
+      <a href="#pocetna" style="font-family:'Jost',sans-serif;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:#57534b;">Početna</a>
+      <a href="#kolekcije" style="font-family:'Jost',sans-serif;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:#57534b;">Kolekcije</a>
+      <a href="#usluge" style="font-family:'Jost',sans-serif;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:#57534b;">Usluge</a>
+      <a href="#o-nama" style="font-family:'Jost',sans-serif;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:#57534b;">O nama</a>
+      <a href="#lokacija" style="font-family:'Jost',sans-serif;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:#57534b;">Lokacija</a>
+      <a href="#faq" style="font-family:'Jost',sans-serif;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:#57534b;">FAQ</a>
+      <a href="#kontakt" style="font-family:'Jost',sans-serif;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:#57534b;">Kontakt</a>
+    </div>
+  </sc-if>
+  <sc-if value="{{ isMobile }}">
+    <button onClick="{{ toggleMobile }}" aria-label="Meni" style="display:flex;flex-direction:column;gap:5px;background:none;border:none;padding:8px 2px;">
+      <span style="display:block;width:24px;height:1px;background:#1b1a18;"></span>
+      <span style="display:block;width:24px;height:1px;background:#1b1a18;"></span>
+      <span style="display:block;width:16px;height:1px;background:#1b1a18;"></span>
+    </button>
+  </sc-if>
+  </div>
+</nav>
+
+<sc-if value="{{ mobileOpen }}">
+  <div style="position:fixed;inset:0;z-index:70;background:#F6F2EB;display:flex;flex-direction:column;padding:22px clamp(24px,7vw,40px) 40px;">
+    <div style="display:flex;align-items:center;justify-content:space-between;">
+      <img src="assets/logo.png" alt="Optika dr Vesna Milosević" style="height:52px;width:auto;display:block;">
+      <button onClick="{{ closeMobile }}" aria-label="Zatvori" style="background:none;border:none;font-family:'Jost',sans-serif;font-size:30px;font-weight:300;line-height:1;color:#1b1a18;padding:0 4px;">×</button>
+    </div>
+    <div style="flex:1;display:flex;flex-direction:column;justify-content:center;gap:6px;">
+      <a href="#pocetna" onClick="{{ closeMobile }}" style="font-family:'Cormorant Garamond',serif;font-weight:300;font-size:40px;line-height:1.25;color:#1b1a18;">Početna</a>
+      <a href="#kolekcije" onClick="{{ closeMobile }}" style="font-family:'Cormorant Garamond',serif;font-weight:300;font-size:40px;line-height:1.25;color:#1b1a18;">Kolekcije</a>
+      <a href="#usluge" onClick="{{ closeMobile }}" style="font-family:'Cormorant Garamond',serif;font-weight:300;font-size:40px;line-height:1.25;color:#1b1a18;">Usluge</a>
+      <a href="#o-nama" onClick="{{ closeMobile }}" style="font-family:'Cormorant Garamond',serif;font-weight:300;font-size:40px;line-height:1.25;color:#1b1a18;">O nama</a>
+      <a href="#lokacija" onClick="{{ closeMobile }}" style="font-family:'Cormorant Garamond',serif;font-weight:300;font-size:40px;line-height:1.25;color:#1b1a18;">Lokacija</a>
+      <a href="#faq" onClick="{{ closeMobile }}" style="font-family:'Cormorant Garamond',serif;font-weight:300;font-size:40px;line-height:1.25;color:#1b1a18;">FAQ</a>
+      <a href="#kontakt" onClick="{{ closeMobile }}" style="font-family:'Cormorant Garamond',serif;font-weight:300;font-size:40px;line-height:1.25;color:#1b1a18;">Kontakt</a>
+    </div>
+    <div style="font-family:'Jost',sans-serif;font-weight:300;font-size:13px;letter-spacing:0.02em;color:#8a857b;line-height:1.8;">Cara Dušana 29, Niš<br>„Dođi i vidi.“</div>
+  </div>
+</sc-if>
+
+<section id="pocetna" style="position:relative;min-height:clamp(560px,90vh,880px);display:flex;align-items:flex-end;overflow:hidden;background:#e8e1d5;scroll-margin-top:70px;">
+  <div style="position:absolute;inset:0;overflow:hidden;">
+    <div style="position:absolute;inset:0;background-image:url('assets/hero.png');background-size:cover;background-position:62% center;transition:transform 1.6s cubic-bezier(.2,.6,.2,1);" style-hover="transform:scale(1.04);"></div>
+  </div>
+  <div style="position:absolute;inset:0;background:rgba(20,19,17,0.18);"></div>
+  <div style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(246,242,235,0.78) 0%,rgba(246,242,235,0.32) 44%,rgba(246,242,235,0) 72%);"></div>
+  <div data-reveal="" style="position:relative;max-width:660px;padding:0 clamp(24px,6vw,96px) clamp(56px,9vh,110px);display:flex;flex-direction:column;align-items:flex-start;gap:clamp(24px,3.2vh,34px);">
+    <p style="font-family:'Jost',sans-serif;font-size:12px;font-weight:400;letter-spacing:0.28em;text-transform:uppercase;color:#7d7869;margin:0;">Optika dr Vesna Milosević</p>
+    <h1 style="font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(3.2rem,8vw,6.4rem);line-height:0.98;letter-spacing:0.005em;color:#1b1a18;margin:0;">Dođi i&nbsp;vidi</h1>
+    <p style="font-family:'Jost',sans-serif;font-weight:300;font-size:clamp(15px,1.3vw,18px);line-height:1.7;color:#4a473f;max-width:400px;margin:0;">Naočare, očni pregledi i pažljivo odabrana optika.</p>
+    <a href="https://ig.me/m/optika_vesna_milosevic_pr" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:14px;padding:17px 36px;border:1px solid #4f938a;font-family:'Jost',sans-serif;font-size:12px;font-weight:400;letter-spacing:0.24em;text-transform:uppercase;color:#F6F2EB;background:#4f938a;" style-hover="background:#3d7f76;border-color:#3d7f76;">Zakaži pregled <span style="font-size:14px;">→</span></a>
+  </div>
+</section>
+
+<section id="kolekcije" style="padding:clamp(72px,12vw,150px) clamp(24px,6vw,96px);background:#F6F2EB;scroll-margin-top:70px;">
+  <div data-reveal="" style="max-width:640px;margin:0 0 clamp(48px,7vw,96px);">
+    <p style="font-family:'Jost',sans-serif;font-size:12px;font-weight:400;letter-spacing:0.28em;text-transform:uppercase;color:#4f938a;margin:0 0 22px;">Kolekcije</p>
+    <p style="font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(1.7rem,3.2vw,2.6rem);line-height:1.28;color:#1b1a18;margin:0;">Pažljivo odabrani okviri i stakla, predstavljeni onako kako ih nosite — kao deo svakodnevice.</p>
+  </div>
+
+  <div data-reveal="" style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(32px,5vw,72px);align-items:center;max-width:980px;margin:0 auto clamp(56px,7vw,96px);">
+    <div style="min-width:0;">
+      <p style="font-family:'Jost',sans-serif;font-size:11px;letter-spacing:0.24em;text-transform:uppercase;color:#a49c8c;margin:0 0 18px;">01 — Kolekcija</p>
+      <h3 style="font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(2.6rem,5vw,4rem);line-height:1;letter-spacing:0.02em;color:#1b1a18;margin:0 0 22px;">Vid</h3>
+      <p style="font-family:'Jost',sans-serif;font-weight:300;font-size:18px;line-height:1.75;color:#57534b;max-width:380px;margin:0 0 28px;">Naočare za svakodnevni stil. Čiste linije i okviri koji prate lice, a ne diktiraju ga.</p>
+      <a href="#vid-modeli" class="pogledaj-btn" style="display:inline-flex;align-items:center;gap:12px;padding:14px 30px;border:1px solid #1b1a18;font-family:'Jost',sans-serif;font-size:12px;font-weight:400;letter-spacing:0.2em;text-transform:uppercase;color:#1b1a18;background:transparent;" style-hover="background:#1b1a18;color:#F6F2EB;">Pogledaj <span style="font-size:14px;">→</span></a>
+    </div>
+    <div style="min-width:0;position:relative;overflow:hidden;background:#e8e1d5;aspect-ratio:5/6;box-shadow:0 34px 60px -18px rgba(27,26,24,0.45), 0 12px 24px -12px rgba(27,26,24,0.3), 0 2px 0 rgba(255,255,255,0.5) inset;border:1px solid rgba(27,26,24,0.10);border-radius:2px;">
+      <div style="position: absolute; inset: 0; background-image: url('assets/vid.jpg'); background-size: cover; background-position: 60% 64%; transition: transform 1.3s cubic-bezier(.2,.6,.2,1);" style-hover="transform:scale(1.05);"></div>
+    </div>
+  </div>
+
+  <div id="vid-modeli" data-reveal="" style="margin-bottom:clamp(64px,9vw,128px);width:100vw;margin-left:calc(50% - 50vw);scroll-margin-top:100px;">
+    <div style="display:flex;align-items:baseline;justify-content:center;gap:20px;flex-wrap:wrap;margin-bottom:26px;padding:0 clamp(24px,6vw,96px);text-align:center;">
+      <p style="font-family:'Jost',sans-serif;font-size:11px;letter-spacing:0.24em;text-transform:uppercase;color:#a49c8c;margin:0;">Dostupni modeli</p>
+    </div>
+    <div style="position:relative;overflow:hidden;padding:6px 0;">
+      <button onClick="{{ prevModel }}" aria-label="Prethodni" style="position:absolute;left:clamp(16px,4vw,64px);top:50%;transform:translateY(-50%);z-index:5;width:46px;height:46px;border-radius:50%;border:1px solid #4f938a;background:rgba(246,242,235,0.9);backdrop-filter:blur(4px);font-size:16px;color:#4f938a;display:flex;align-items:center;justify-content:center;transition:background .35s ease,color .35s ease,border-color .35s ease;" style-hover="background:#4f938a;color:#F6F2EB;border-color:#4f938a;">←</button>
+      <button onClick="{{ nextModel }}" aria-label="Sledeći" style="position:absolute;right:clamp(16px,4vw,64px);top:50%;transform:translateY(-50%);z-index:5;width:46px;height:46px;border-radius:50%;border:1px solid #4f938a;background:rgba(246,242,235,0.9);backdrop-filter:blur(4px);font-size:16px;color:#4f938a;display:flex;align-items:center;justify-content:center;transition:background .35s ease,color .35s ease,border-color .35s ease;" style-hover="background:#4f938a;color:#F6F2EB;border-color:#4f938a;">→</button>
+      <div style="display:flex;transition:transform .7s cubic-bezier(.2,.6,.2,1);transform:{{ modelOffset }};">
+        <div style="flex:0 0 36%;box-sizing:border-box;padding:0 8px;">
+          <div style="position:relative;overflow:hidden;background:#e8e1d5;aspect-ratio:16/9;box-shadow:0 20px 44px -24px rgba(27,26,24,0.28);border:1px solid rgba(27,26,24,0.06);filter:{{ mf0 }};opacity:{{ mo0 }};transform:{{ ms0 }};transition:filter .6s ease,opacity .6s ease,transform .6s ease;">
+            <div style="position:absolute;inset:0;background-image:url('assets/model-01.jpg');background-size:cover;background-position:center;"></div>
+          </div>
+        </div>
+        <div style="flex:0 0 36%;box-sizing:border-box;padding:0 8px;">
+          <div style="position:relative;overflow:hidden;background:#e6e2da;aspect-ratio:16/9;box-shadow:0 20px 44px -24px rgba(27,26,24,0.28);border:1px solid rgba(27,26,24,0.06);filter:{{ mf1 }};opacity:{{ mo1 }};transform:{{ ms1 }};transition:filter .6s ease,opacity .6s ease,transform .6s ease;">
+            <div style="position:absolute;inset:0;background-image:url('assets/model-02.jpg');background-size:cover;background-position:center;"></div>
+          </div>
+        </div>
+        <div style="flex:0 0 36%;box-sizing:border-box;padding:0 8px;">
+          <div style="position:relative;overflow:hidden;background:#e4e6e3;aspect-ratio:16/9;box-shadow:0 20px 44px -24px rgba(27,26,24,0.28);border:1px solid rgba(27,26,24,0.06);filter:{{ mf2 }};opacity:{{ mo2 }};transform:{{ ms2 }};transition:filter .6s ease,opacity .6s ease,transform .6s ease;">
+            <div style="position:absolute;inset:0;background-image:url('assets/model-03.jpg');background-size:cover;background-position:center;"></div>
+          </div>
+        </div>
+        <div style="flex:0 0 36%;box-sizing:border-box;padding:0 8px;">
+          <div style="position:relative;overflow:hidden;background:#e8e1d5;aspect-ratio:16/9;box-shadow:0 20px 44px -24px rgba(27,26,24,0.28);border:1px solid rgba(27,26,24,0.06);filter:{{ mf3 }};opacity:{{ mo3 }};transform:{{ ms3 }};transition:filter .6s ease,opacity .6s ease,transform .6s ease;">
+            <div style="position:absolute;inset:0;background-image:url('assets/model-04.jpg');background-size:cover;background-position:center;"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div style="display:flex;gap:10px;justify-content:center;margin-top:24px;">
+      <button onClick="{{ goModel0 }}" aria-label="Model 1" style="width:9px;height:9px;padding:0;border:none;border-radius:50%;cursor:pointer;transition:background .35s ease;background:{{ dotBg0 }};"></button>
+      <button onClick="{{ goModel1 }}" aria-label="Model 2" style="width:9px;height:9px;padding:0;border:none;border-radius:50%;cursor:pointer;transition:background .35s ease;background:{{ dotBg1 }};"></button>
+      <button onClick="{{ goModel2 }}" aria-label="Model 3" style="width:9px;height:9px;padding:0;border:none;border-radius:50%;cursor:pointer;transition:background .35s ease;background:{{ dotBg2 }};"></button>
+      <button onClick="{{ goModel3 }}" aria-label="Model 4" style="width:9px;height:9px;padding:0;border:none;border-radius:50%;cursor:pointer;transition:background .35s ease;background:{{ dotBg3 }};"></button>
+    </div>
+  </div>
+
+  
+
+  <div data-reveal="" style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(32px,5vw,72px);align-items:center;max-width:980px;margin:0 auto clamp(56px,7vw,96px);">
+    <div style="min-width:0;position:relative;overflow:hidden;background:#e4e6e3;aspect-ratio:5/6;box-shadow:0 34px 60px -18px rgba(27,26,24,0.45), 0 12px 24px -12px rgba(27,26,24,0.3), 0 2px 0 rgba(255,255,255,0.5) inset;border:1px solid rgba(27,26,24,0.10);border-radius:2px;">
+      <div style="position: absolute; inset: 0; background-image: url('assets/sunce.jpg'); background-size: cover; background-position: 60% 58%; transition: transform 1.3s cubic-bezier(.2,.6,.2,1);" style-hover="transform:scale(1.05);"></div>
+    </div><div class="col-sunce-copy" style="min-width:0;padding-left:clamp(48px,7vw,110px);">
+      <p style="font-family:'Jost',sans-serif;font-size:11px;letter-spacing:0.24em;text-transform:uppercase;color:#a49c8c;margin:0 0 18px;">02 — Kolekcija</p>
+      <h3 style="font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(2.6rem,5vw,4rem);line-height:1;letter-spacing:0.02em;color:#1b1a18;margin:0 0 22px;">Sunce</h3>
+      <p style="font-family:'Jost',sans-serif;font-weight:300;font-size:18px;line-height:1.75;color:#57534b;max-width:380px;margin:0 0 28px;">Sunčane naočare sa karakterom. Zaštita koja se nosi kao stav, u svakom svetlu.</p><a href="#sun-modeli" class="pogledaj-btn" style="display:inline-flex;align-items:center;gap:12px;padding:14px 30px;border:1px solid #1b1a18;font-family:'Jost',sans-serif;font-size:12px;font-weight:400;letter-spacing:0.2em;text-transform:uppercase;color:#1b1a18;background:transparent;" style-hover="background:#1b1a18;color:#F6F2EB;">Pogledaj <span style="font-size:14px;">→</span></a>
+    </div>
+
+  </div><div id="sun-modeli" data-reveal="" style="margin-bottom:clamp(64px,9vw,128px);width:100vw;margin-left:calc(50% - 50vw);scroll-margin-top:100px;">
+    <div style="display:flex;align-items:baseline;justify-content:center;gap:20px;flex-wrap:wrap;margin-bottom:26px;padding:0 clamp(24px,6vw,96px);text-align:center;">
+      <p style="font-family:'Jost',sans-serif;font-size:11px;letter-spacing:0.24em;text-transform:uppercase;color:#a49c8c;margin:0;">Sunčane naočare — modeli</p>
+    </div>
+    <div style="position:relative;overflow:hidden;padding:6px 0;">
+      <button onClick="{{ prevSun }}" aria-label="Prethodni" style="position:absolute;left:clamp(16px,4vw,64px);top:50%;transform:translateY(-50%);z-index:5;width:46px;height:46px;border-radius:50%;border:1px solid #4f938a;background:rgba(246,242,235,0.9);backdrop-filter:blur(4px);font-size:16px;color:#4f938a;display:flex;align-items:center;justify-content:center;transition:background .35s ease,color .35s ease,border-color .35s ease;" style-hover="background:#4f938a;color:#F6F2EB;border-color:#4f938a;">←</button>
+      <button onClick="{{ nextSun }}" aria-label="Sledeći" style="position:absolute;right:clamp(16px,4vw,64px);top:50%;transform:translateY(-50%);z-index:5;width:46px;height:46px;border-radius:50%;border:1px solid #4f938a;background:rgba(246,242,235,0.9);backdrop-filter:blur(4px);font-size:16px;color:#4f938a;display:flex;align-items:center;justify-content:center;transition:background .35s ease,color .35s ease,border-color .35s ease;" style-hover="background:#4f938a;color:#F6F2EB;border-color:#4f938a;">→</button>
+      <div style="display:flex;transition:transform .7s cubic-bezier(.2,.6,.2,1);transform:{{ sunOffset }};">
+        <div style="flex:0 0 36%;box-sizing:border-box;padding:0 8px;">
+          <div style="position:relative;overflow:hidden;background:#e4e6e3;aspect-ratio:16/9;box-shadow:0 20px 44px -24px rgba(27,26,24,0.28);border:1px solid rgba(27,26,24,0.06);filter:{{ sf0 }};opacity:{{ so0 }};transform:{{ ss0 }};transition:filter .6s ease,opacity .6s ease,transform .6s ease;">
+            <div style="position:absolute;inset:0;background-image:url('assets/suncane-01.jpg');background-size:cover;background-position:center;"></div>
+          </div>
+        </div>
+        <div style="flex:0 0 36%;box-sizing:border-box;padding:0 8px;">
+          <div style="position:relative;overflow:hidden;background:#e8e1d5;aspect-ratio:16/9;box-shadow:0 20px 44px -24px rgba(27,26,24,0.28);border:1px solid rgba(27,26,24,0.06);filter:{{ sf1 }};opacity:{{ so1 }};transform:{{ ss1 }};transition:filter .6s ease,opacity .6s ease,transform .6s ease;">
+            <div style="position:absolute;inset:0;background-image:url('assets/suncane-02.jpg');background-size:cover;background-position:center;"></div>
+          </div>
+        </div>
+        <div style="flex:0 0 36%;box-sizing:border-box;padding:0 8px;">
+          <div style="position:relative;overflow:hidden;background:#e6e2da;aspect-ratio:16/9;box-shadow:0 20px 44px -24px rgba(27,26,24,0.28);border:1px solid rgba(27,26,24,0.06);filter:{{ sf2 }};opacity:{{ so2 }};transform:{{ ss2 }};transition:filter .6s ease,opacity .6s ease,transform .6s ease;">
+            <div style="position:absolute;inset:0;background-image:url('assets/suncane-03.jpg');background-size:cover;background-position:center;"></div>
+          </div>
+        </div>
+        <div style="flex:0 0 36%;box-sizing:border-box;padding:0 8px;">
+          <div style="position:relative;overflow:hidden;background:#e4e6e3;aspect-ratio:16/9;box-shadow:0 20px 44px -24px rgba(27,26,24,0.28);border:1px solid rgba(27,26,24,0.06);filter:{{ sf3 }};opacity:{{ so3 }};transform:{{ ss3 }};transition:filter .6s ease,opacity .6s ease,transform .6s ease;">
+            <div style="position:absolute;inset:0;background-image:url('assets/suncane-04.jpg');background-size:cover;background-position:center;"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div style="display:flex;gap:10px;justify-content:center;margin-top:24px;">
+      <button onClick="{{ goSun0 }}" aria-label="Model 1" style="width:9px;height:9px;padding:0;border:none;border-radius:50%;cursor:pointer;transition:background .35s ease;background:{{ sunDot0 }};"></button>
+      <button onClick="{{ goSun1 }}" aria-label="Model 2" style="width:9px;height:9px;padding:0;border:none;border-radius:50%;cursor:pointer;transition:background .35s ease;background:{{ sunDot1 }};"></button>
+      <button onClick="{{ goSun2 }}" aria-label="Model 3" style="width:9px;height:9px;padding:0;border:none;border-radius:50%;cursor:pointer;transition:background .35s ease;background:{{ sunDot2 }};"></button>
+      <button onClick="{{ goSun3 }}" aria-label="Model 4" style="width:9px;height:9px;padding:0;border:none;border-radius:50%;cursor:pointer;transition:background .35s ease;background:{{ sunDot3 }};"></button>
+    </div>
+  </div>
+
+  <div data-reveal="" style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(32px,5vw,72px);align-items:center;max-width:980px;margin:0 auto clamp(56px,7vw,96px);">
+    <div style="min-width:0;">
+      <p style="font-family:'Jost',sans-serif;font-size:11px;letter-spacing:0.24em;text-transform:uppercase;color:#4f938a;margin:0 0 18px;">03 — Pregled</p>
+      <h3 style="font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(2.6rem,5vw,4rem);line-height:1;letter-spacing:0.01em;color:#1b1a18;margin:0 0 24px;">Provera vida<br>bez žurbe</h3>
+      <p style="font-family:'Jost',sans-serif;font-weight:300;font-size:17px;line-height:1.8;color:#57534b;max-width:420px;margin:0 0 22px;">Stručan očni pregled i individualna preporuka — temelj svakog dobrog para naočara. Uzimamo vremena da razumemo kako gledate i kako živite.</p>
+      <p style="font-family:'Jost',sans-serif;font-weight:300;font-size:17px;line-height:1.8;color:#57534b;max-width:420px;margin:0 0 34px;">Od prvog reda do poslednjeg, sve počinje jasnim pogledom.</p>
+    </div>
+    <div style="min-width:0;display:flex;justify-content:center;">
+      <img src="assets/eye-chart.png" alt="Optotip — tablica za proveru vida" style="display:block;width:100%;max-width:300px;height:auto;opacity:0.82;filter:drop-shadow(0 26px 40px rgba(27,26,24,0.22));" />
+    </div>
+  </div>
+</section>
+
+<section id="usluge" style="padding:clamp(72px,12vw,150px) clamp(24px,6vw,96px);background:#FFFFFF;scroll-margin-top:70px;">
+  <div data-reveal="" style="max-width:560px;margin:0 0 clamp(40px,6vw,72px);">
+    <p style="font-family:'Jost',sans-serif;font-size:12px;font-weight:400;letter-spacing:0.28em;text-transform:uppercase;color:#4f938a;margin:0 0 22px;">Usluge</p>
+    <p style="font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(1.7rem,3.2vw,2.6rem);line-height:1.28;color:#1b1a18;margin:0;">Sve što je potrebno da vidite jasno — bez žurbe, sa pažnjom.</p>
+  </div>
+  <div style="border-bottom:1px solid rgba(27,26,24,0.14);">
+    <div data-reveal="" style="display:flex;flex-wrap:wrap;gap:14px 48px;padding:clamp(28px,4vw,40px) 0;border-top:1px solid rgba(27,26,24,0.14);align-items:baseline;">
+      <div style="flex:1 1 260px;display:flex;gap:22px;align-items:baseline;">
+        <span style="font:500 12px/1 ui-monospace,SFMono-Regular,Menlo,monospace;color:#b7b0a1;">01</span>
+        <h3 style="font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(1.9rem,3.4vw,2.6rem);line-height:1.05;color:#1b1a18;margin:0;">Očni pregledi</h3>
+      </div>
+      <p style="flex:1 1 300px;font-family:'Jost',sans-serif;font-weight:300;font-size:15px;line-height:1.7;color:#57534b;margin:0;max-width:440px;">Detaljan i individualan pristup svakom pacijentu.</p>
+    </div>
+    <div data-reveal="" style="display:flex;flex-wrap:wrap;gap:14px 48px;padding:clamp(28px,4vw,40px) 0;border-top:1px solid rgba(27,26,24,0.14);align-items:baseline;">
+      <div style="flex:1 1 260px;display:flex;gap:22px;align-items:baseline;">
+        <span style="font:500 12px/1 ui-monospace,SFMono-Regular,Menlo,monospace;color:#b7b0a1;">02</span>
+        <h3 style="font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(1.9rem,3.4vw,2.6rem);line-height:1.05;color:#1b1a18;margin:0;">Naočare za vid</h3>
+      </div>
+      <p style="flex:1 1 300px;font-family:'Jost',sans-serif;font-weight:300;font-size:15px;line-height:1.7;color:#57534b;margin:0;max-width:440px;">Pažljivo odabrani okviri za različite stilove i potrebe.</p>
+    </div>
+    <div data-reveal="" style="display:flex;flex-wrap:wrap;gap:14px 48px;padding:clamp(28px,4vw,40px) 0;border-top:1px solid rgba(27,26,24,0.14);align-items:baseline;">
+      <div style="flex:1 1 260px;display:flex;gap:22px;align-items:baseline;">
+        <span style="font:500 12px/1 ui-monospace,SFMono-Regular,Menlo,monospace;color:#b7b0a1;">03</span>
+        <h3 style="font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(1.9rem,3.4vw,2.6rem);line-height:1.05;color:#1b1a18;margin:0;">Sunčane naočare</h3>
+      </div>
+      <p style="flex:1 1 300px;font-family:'Jost',sans-serif;font-weight:300;font-size:15px;line-height:1.7;color:#57534b;margin:0;max-width:440px;">Zaštita i estetika u jednom.</p>
+    </div>
+    <div data-reveal="" style="display:flex;flex-wrap:wrap;gap:14px 48px;padding:clamp(28px,4vw,40px) 0;border-top:1px solid rgba(27,26,24,0.14);align-items:baseline;">
+      <div style="flex:1 1 260px;display:flex;gap:22px;align-items:baseline;">
+        <span style="font:500 12px/1 ui-monospace,SFMono-Regular,Menlo,monospace;color:#b7b0a1;">04</span>
+        <h3 style="font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(1.9rem,3.4vw,2.6rem);line-height:1.05;color:#1b1a18;margin:0;">Individualni savet</h3>
+      </div>
+      <p style="flex:1 1 300px;font-family:'Jost',sans-serif;font-weight:300;font-size:15px;line-height:1.7;color:#57534b;margin:0;max-width:440px;">Pomoć pri izboru okvira i odgovarajućih stakala.</p>
+    </div>
+  </div>
+</section>
+
+<section style="position:relative;overflow:hidden;background:#e4e6e3;min-height:clamp(480px,80vh,760px);display:flex;align-items:center;scroll-margin-top:70px;">
+  <div style="position:absolute;inset:0;background-image:url('assets/editorial.jpg');background-size:cover;background-position:center;transition:transform 2s cubic-bezier(.2,.6,.2,1);" style-hover="transform:scale(1.03);"></div>
+  <div style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(20,19,17,0.5) 0%,rgba(20,19,17,0.15) 45%,rgba(20,19,17,0) 72%);"></div>
+  <div data-reveal="" style="position:relative;padding:clamp(48px,8vw,110px) clamp(24px,6vw,96px);max-width:640px;">
+    <p style="font-family:'Cormorant Garamond',serif;font-weight:300;font-style:italic;font-size:clamp(2rem,4.4vw,3.6rem);line-height:1.25;color:#F6F2EB;margin:0;">„Naočare nisu samo pogled.<br>One su deo vašeg stila.“</p>
+  </div>
+</section>
+
+<section id="o-nama" style="padding:clamp(72px,12vw,150px) clamp(24px,6vw,96px);background:#F6F2EB;scroll-margin-top:70px;">
+  <div data-reveal="" style="display:flex;flex-wrap:wrap;gap:clamp(36px,6vw,96px);align-items:center;">
+    <div style="flex:1 1 320px;min-width:min(100%,300px);position:relative;overflow:hidden;background:#e8e1d5;aspect-ratio:4/5;">
+      <div style="position:absolute;inset:0;background-image:url('assets/dr-vesna.jpg');background-size:cover;background-position:50% 22%;transition:transform 1.3s cubic-bezier(.2,.6,.2,1);" style-hover="transform:scale(1.04);"></div>
+    </div>
+    <div style="flex:1.1 1 340px;min-width:min(100%,300px);">
+      <p style="font-family:'Jost',sans-serif;font-size:12px;font-weight:400;letter-spacing:0.28em;text-transform:uppercase;color:#4f938a;margin:0 0 22px;">O nama</p>
+      <h2 style="font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(2rem,4vw,3.2rem);line-height:1.1;color:#1b1a18;margin:0 0 28px;">Optika osnovana na poverenju i pažnji.</h2>
+      <p style="font-family:'Jost',sans-serif;font-weight:300;font-size:16px;line-height:1.8;color:#57534b;max-width:460px;margin:0 0 20px;">Optiku dr Vesna Milosević vodi ideja da svaki pogled zaslužuje vreme i stručnost. Pažljivo biramo okvire i stakla, a svaku preporuku prilagođavamo čoveku pred nama.</p>
+      <p style="font-family:'Jost',sans-serif;font-weight:300;font-size:16px;line-height:1.8;color:#57534b;max-width:460px;margin:0 0 30px;">Savremen pristup, mirna atmosfera i briga o vidu — od pregleda do izbora naočara.</p>
+      <p style="font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:400;font-size:20px;color:#1b1a18;margin:0;">— dr Vesna Milosević</p>
+    </div>
+  </div>
+</section>
+
+<section id="lokacija" style="padding:clamp(72px,12vw,150px) clamp(24px,6vw,96px);background:#FFFFFF;scroll-margin-top:70px;">
+  <div data-reveal="" style="display:flex;flex-wrap:wrap;gap:clamp(36px,6vw,88px);align-items:center;">
+    <div style="flex:1 1 300px;min-width:min(100%,280px);">
+      <p style="font-family:'Jost',sans-serif;font-size:12px;font-weight:400;letter-spacing:0.28em;text-transform:uppercase;color:#4f938a;margin:0 0 22px;">Pronađite nas</p>
+      <h2 style="font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(2rem,4vw,3.2rem);line-height:1.08;color:#1b1a18;margin:0 0 26px;">Cara Dušana 29<br>Niš, Srbija</h2>
+      <p style="font-family:'Jost',sans-serif;font-weight:300;font-size:15px;line-height:1.7;color:#57534b;max-width:360px;margin:0 0 34px;">Svratite u radnju — rado ćemo vam pomoći pri izboru i podešavanju naočara.</p>
+      <a href="https://www.google.com/maps/search/?api=1&amp;query=Cara%20Du%C5%A1ana%2029%2C%20Ni%C5%A1" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:14px;padding:16px 34px;border:1px solid #1b1a18;font-family:'Jost',sans-serif;font-size:12px;font-weight:400;letter-spacing:0.24em;text-transform:uppercase;color:#1b1a18;background:transparent;" style-hover="background:#1b1a18;color:#F6F2EB;">Pogledaj lokaciju <span style="font-size:14px;">→</span></a>
+    </div>
+    <a href="https://www.google.com/maps/search/?api=1&amp;query=Cara%20Du%C5%A1ana%2029%2C%20Ni%C5%A1" target="_blank" rel="noopener" style="flex:1.2 1 380px;min-width:min(100%,300px);position:relative;overflow:hidden;background:#eceae4;aspect-ratio:16/10;border:1px solid rgba(27,26,24,0.12);display:block;">
+      <iframe title="Optika dr Vesna Milosević — Cara Dušana 29, Niš" src="https://maps.google.com/maps?q=Cara%20Du%C5%A1ana%2029%2C%20Ni%C5%A1&amp;z=16&amp;output=embed" style="position:absolute;inset:0;width:100%;height:100%;border:0;filter:grayscale(0.35) contrast(0.95);" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </a>
+  </div>
+</section>
+
+<section id="faq" style="padding:clamp(72px,12vw,150px) clamp(24px,6vw,96px);background:#F6F2EB;scroll-margin-top:70px;">
+  <div data-reveal="" style="max-width:820px;margin:0 auto;">
+    <p style="font-family:'Jost',sans-serif;font-size:12px;font-weight:400;letter-spacing:0.28em;text-transform:uppercase;color:#4f938a;margin:0 0 40px;text-align:center;">Česta pitanja</p>
+    <div style="border-top:1px solid rgba(27,26,24,0.14);">
+      <div style="border-bottom:1px solid rgba(27,26,24,0.14);">
+        <button onClick="{{ toggleFaq0 }}" style="width:100%;display:flex;align-items:center;justify-content:space-between;gap:24px;padding:26px 0;background:none;border:none;text-align:left;">
+          <span style="font-family:'Cormorant Garamond',serif;font-weight:400;font-size:clamp(1.3rem,2.4vw,1.7rem);line-height:1.25;color:#1b1a18;">Da li je potrebno zakazati očni pregled?</span>
+          <span style="font-family:'Jost',sans-serif;font-weight:300;font-size:26px;line-height:1;color:#4f938a;transition:transform .35s ease;transform:{{ faqRot0 }};">+</span>
+        </button>
+        <sc-if value="{{ faqOpen0 }}"><p style="font-family:'Jost',sans-serif;font-weight:300;font-size:15px;line-height:1.75;color:#57534b;margin:0;padding:0 0 26px;max-width:640px;">Preporučujemo zakazivanje kako biste bili sigurni da vam možemo posvetiti dovoljno vremena, ali rado ćemo vas primiti i bez najave kad god smo slobodni.</p></sc-if>
+      </div>
+      <div style="border-bottom:1px solid rgba(27,26,24,0.14);">
+        <button onClick="{{ toggleFaq1 }}" style="width:100%;display:flex;align-items:center;justify-content:space-between;gap:24px;padding:26px 0;background:none;border:none;text-align:left;">
+          <span style="font-family:'Cormorant Garamond',serif;font-weight:400;font-size:clamp(1.3rem,2.4vw,1.7rem);line-height:1.25;color:#1b1a18;">Koliko traje očni pregled?</span>
+          <span style="font-family:'Jost',sans-serif;font-weight:300;font-size:26px;line-height:1;color:#4f938a;transition:transform .35s ease;transform:{{ faqRot1 }};">+</span>
+        </button>
+        <sc-if value="{{ faqOpen1 }}"><p style="font-family:'Jost',sans-serif;font-weight:300;font-size:15px;line-height:1.75;color:#57534b;margin:0;padding:0 0 26px;max-width:640px;">Detaljan pregled obično traje između 20 i 30 minuta, u zavisnosti od vaših potreba.</p></sc-if>
+      </div>
+      <div style="border-bottom:1px solid rgba(27,26,24,0.14);">
+        <button onClick="{{ toggleFaq2 }}" style="width:100%;display:flex;align-items:center;justify-content:space-between;gap:24px;padding:26px 0;background:none;border:none;text-align:left;">
+          <span style="font-family:'Cormorant Garamond',serif;font-weight:400;font-size:clamp(1.3rem,2.4vw,1.7rem);line-height:1.25;color:#1b1a18;">Kako izabrati odgovarajući okvir?</span>
+          <span style="font-family:'Jost',sans-serif;font-weight:300;font-size:26px;line-height:1;color:#4f938a;transition:transform .35s ease;transform:{{ faqRot2 }};">+</span>
+        </button>
+        <sc-if value="{{ faqOpen2 }}"><p style="font-family:'Jost',sans-serif;font-weight:300;font-size:15px;line-height:1.75;color:#57534b;margin:0;padding:0 0 26px;max-width:640px;">Pomažemo vam da pronađete okvir koji odgovara obliku lica, stilu i načinu života — bez pritiska, uz iskren savet.</p></sc-if>
+      </div>
+      <div style="border-bottom:1px solid rgba(27,26,24,0.14);">
+        <button onClick="{{ toggleFaq3 }}" style="width:100%;display:flex;align-items:center;justify-content:space-between;gap:24px;padding:26px 0;background:none;border:none;text-align:left;">
+          <span style="font-family:'Cormorant Garamond',serif;font-weight:400;font-size:clamp(1.3rem,2.4vw,1.7rem);line-height:1.25;color:#1b1a18;">Da li mogu doći samo radi podešavanja naočara?</span>
+          <span style="font-family:'Jost',sans-serif;font-weight:300;font-size:26px;line-height:1;color:#4f938a;transition:transform .35s ease;transform:{{ faqRot3 }};">+</span>
+        </button>
+        <sc-if value="{{ faqOpen3 }}"><p style="font-family:'Jost',sans-serif;font-weight:300;font-size:15px;line-height:1.75;color:#57534b;margin:0;padding:0 0 26px;max-width:640px;">Naravno. Rado ćemo podesiti i one naočare koje niste kupili kod nas.</p></sc-if>
+      </div>
+      <div style="border-bottom:1px solid rgba(27,26,24,0.14);">
+        <button onClick="{{ toggleFaq4 }}" style="width:100%;display:flex;align-items:center;justify-content:space-between;gap:24px;padding:26px 0;background:none;border:none;text-align:left;">
+          <span style="font-family:'Cormorant Garamond',serif;font-weight:400;font-size:clamp(1.3rem,2.4vw,1.7rem);line-height:1.25;color:#1b1a18;">Kako da znam koja stakla su odgovarajuća za mene?</span>
+          <span style="font-family:'Jost',sans-serif;font-weight:300;font-size:26px;line-height:1;color:#4f938a;transition:transform .35s ease;transform:{{ faqRot4 }};">+</span>
+        </button>
+        <sc-if value="{{ faqOpen4 }}"><p style="font-family:'Jost',sans-serif;font-weight:300;font-size:15px;line-height:1.75;color:#57534b;margin:0;padding:0 0 26px;max-width:640px;">Na osnovu pregleda i vaših navika preporučujemo stakla koja vam najviše odgovaraju — od klasičnih do onih sa dodatnim zaštitama.</p></sc-if>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="padding:clamp(90px,16vw,190px) clamp(24px,6vw,96px);background:#cfe3df;text-align:center;scroll-margin-top:70px;">
+  <div data-reveal="" style="max-width:720px;margin:0 auto;">
+    <h2 style="font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(3.4rem,9vw,7rem);line-height:0.98;letter-spacing:0.01em;color:#1b1a18;margin:0 0 32px;">„Dođi i vidi.“</h2>
+    <p style="font-family:'Jost',sans-serif;font-weight:300;font-size:15px;line-height:1.7;letter-spacing:0.02em;color:#3a5a55;margin:0 0 44px;">Optika dr Vesna Milosević <span style="color:#2f7068;">&nbsp;·&nbsp;</span> Cara Dušana 29, Niš</p>
+    <a href="https://ig.me/m/optika_vesna_milosevic_pr" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:14px;padding:17px 40px;border:1px solid #4f938a;font-family:'Jost',sans-serif;font-size:12px;font-weight:400;letter-spacing:0.24em;text-transform:uppercase;color:#F6F2EB;background:#4f938a;" style-hover="background:#3d7f76;border-color:#3d7f76;">Zakaži pregled <span style="font-size:14px;">→</span></a>
+  </div>
+</section>
+
+<footer id="kontakt" style="background:#1b1a18;color:#F6F2EB;padding:clamp(56px,9vw,96px) clamp(24px,6vw,96px) clamp(36px,5vw,56px);scroll-margin-top:70px;">
+  <div style="display:flex;flex-wrap:wrap;gap:clamp(36px,6vw,80px);justify-content:space-between;">
+    <div style="flex:1 1 260px;min-width:min(100%,240px);">
+      <p style="font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(1.6rem,3vw,2.2rem);line-height:1.15;margin:0 0 18px;">Optika dr Vesna Milosević</p>
+      <p style="font-family:'Jost',sans-serif;font-weight:300;font-size:14px;line-height:1.8;color:#9a958b;margin:0;">Cara Dušana 29<br>Niš, Srbija</p>
+    </div>
+    <div style="flex:0 1 auto;min-width:140px;display:flex;flex-direction:column;gap:14px;">
+      <a href="#pocetna" style="font-family:'Jost',sans-serif;font-size:12px;letter-spacing:0.18em;text-transform:uppercase;color:#c9c4ba;" style-hover="color:#F6F2EB;">Početna</a>
+      <a href="#usluge" style="font-family:'Jost',sans-serif;font-size:12px;letter-spacing:0.18em;text-transform:uppercase;color:#c9c4ba;" style-hover="color:#F6F2EB;">Usluge</a>
+      <a href="#o-nama" style="font-family:'Jost',sans-serif;font-size:12px;letter-spacing:0.18em;text-transform:uppercase;color:#c9c4ba;" style-hover="color:#F6F2EB;">O nama</a>
+      <a href="#faq" style="font-family:'Jost',sans-serif;font-size:12px;letter-spacing:0.18em;text-transform:uppercase;color:#c9c4ba;" style-hover="color:#F6F2EB;">FAQ</a>
+      <a href="#lokacija" style="font-family:'Jost',sans-serif;font-size:12px;letter-spacing:0.18em;text-transform:uppercase;color:#c9c4ba;" style-hover="color:#F6F2EB;">Lokacija</a>
+    </div>
+    <div style="flex:0 1 auto;min-width:180px;display:flex;flex-direction:column;gap:14px;">
+      <p style="font-family:'Jost',sans-serif;font-size:11px;letter-spacing:0.24em;text-transform:uppercase;color:#6f6a61;margin:0 0 4px;">Kontakt</p>
+      <a href="https://www.instagram.com/optika_vesna_milosevic_pr" target="_blank" rel="noopener" style="font-family:'Jost',sans-serif;font-weight:300;font-size:14px;color:#c9c4ba;" style-hover="color:#7fb8b0;">Instagram — @optika_vesna_milosevic_pr</a>
+      <a href="tel:+381695235500" style="font-family:'Jost',sans-serif;font-weight:300;font-size:14px;color:#c9c4ba;" style-hover="color:#7fb8b0;">Telefon — 069 5235500</a>
+      <a href="mailto:optika.studiom@gmail.com" style="font-family:'Jost',sans-serif;font-weight:300;font-size:14px;color:#c9c4ba;" style-hover="color:#7fb8b0;">Email — optika.studiom@gmail.com</a>
+    </div>
+  </div>
+  <div style="margin-top:clamp(40px,6vw,64px);padding-top:24px;border-top:1px solid rgba(246,242,235,0.14);display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;align-items:center;">
+    <span style="font-family:'Jost',sans-serif;font-weight:300;font-size:12px;letter-spacing:0.04em;color:#6f6a61;">© 2026 Optika dr Vesna Milosević</span>
+    <span style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:18px;color:#7fb8b0;">„Dođi i vidi.“</span>
+  </div>
+</footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{
+  &quot;enableReveal&quot;: { &quot;editor&quot;: &quot;boolean&quot;, &quot;default&quot;: true, &quot;tsType&quot;: &quot;boolean&quot;, &quot;section&quot;: &quot;Ponašanje&quot; },
+  &quot;faqMultiOpen&quot;: { &quot;editor&quot;: &quot;boolean&quot;, &quot;default&quot;: false, &quot;tsType&quot;: &quot;boolean&quot;, &quot;section&quot;: &quot;Ponašanje&quot; }
+}">
+class Component extends DCLogic {
+  state = {
+    isMobile: (typeof window !== 'undefined' ? window.innerWidth < 820 : false),
+    mobileOpen: false,
+    faq: {},
+    modelIndex: 0,
+    sunIndex: 0
+  };
+
+  componentDidMount() {
+    this._onResize = () => {
+      const m = window.innerWidth < 820;
+      if (m !== this.state.isMobile) this.setState({ isMobile: m, mobileOpen: false });
+    };
+    window.addEventListener('resize', this._onResize);
+
+    try {
+      const nav = document.querySelector('[data-nav]');
+      const hero = document.getElementById('pocetna');
+      if (nav) {
+        const onNav = () => {
+          const threshold = (hero ? hero.offsetHeight : (window.innerHeight || 700)) - 72;
+          if (window.scrollY > threshold) {
+            nav.style.background = 'rgba(246,242,235,0.94)';
+            nav.style.backdropFilter = 'blur(6px)';
+            nav.style.webkitBackdropFilter = 'blur(6px)';
+            nav.style.borderBottomColor = 'rgba(27,26,24,0.08)';
+          } else {
+            nav.style.background = 'transparent';
+            nav.style.backdropFilter = 'none';
+            nav.style.webkitBackdropFilter = 'none';
+            nav.style.borderBottomColor = 'transparent';
+          }
+        };
+        onNav();
+        this._navScroll = onNav;
+        window.addEventListener('scroll', onNav, { passive: true });
+        window.addEventListener('resize', onNav);
+      }
+    } catch (e) {}
+
+    try {
+      if (!(this.props.enableReveal ?? true)) return;
+      const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (reduce) return;
+      const els = Array.from(document.querySelectorAll('[data-reveal]'));
+      if (!els.length) return;
+      const show = (el) => {
+        el.style.opacity = '1';
+        el.style.transform = 'none';
+        el.style.filter = 'none';
+      };
+      els.forEach((el) => {
+        el.style.willChange = 'opacity, transform, filter';
+        el.style.transition = 'opacity 1.1s cubic-bezier(.2,.6,.2,1), transform 1.1s cubic-bezier(.2,.6,.2,1), filter 1.1s cubic-bezier(.2,.6,.2,1)';
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(44px)';
+        el.style.filter = 'blur(6px)';
+      });
+
+      // Progressive reveal: an element shows once its top passes ~88% of the
+      // viewport height, so text appears gradually as you scroll down.
+      let pending = els.slice();
+      let ticking = false;
+      const check = () => {
+        ticking = false;
+        const vh = window.innerHeight || 800;
+        pending = pending.filter((el) => {
+          const r = el.getBoundingClientRect();
+          if (r.top < vh * 0.88 && r.bottom > 0) { show(el); return false; }
+          return true;
+        });
+        if (!pending.length) {
+          window.removeEventListener('scroll', onScroll);
+          window.removeEventListener('resize', onScroll);
+        }
+      };
+      const onScroll = () => {
+        if (!ticking) { ticking = true; requestAnimationFrame(check); }
+      };
+      this._revealScroll = onScroll;
+      window.addEventListener('scroll', onScroll, { passive: true });
+      window.addEventListener('resize', onScroll);
+      // Initial pass for whatever is already on screen at load.
+      requestAnimationFrame(() => requestAnimationFrame(check));
+    } catch (e) {
+      document.querySelectorAll('[data-reveal]').forEach((el) => {
+        el.style.opacity = '1'; el.style.transform = 'none';
+      });
+    }
+  }
+
+  componentWillUnmount() {
+    if (this._onResize) window.removeEventListener('resize', this._onResize);
+    if (this._revealScroll) {
+      window.removeEventListener('scroll', this._revealScroll);
+      window.removeEventListener('resize', this._revealScroll);
+    }
+    if (this._navScroll) {
+      window.removeEventListener('scroll', this._navScroll);
+      window.removeEventListener('resize', this._navScroll);
+    }
+  }
+
+  _toggleFaq(n) {
+    const multi = this.props.faqMultiOpen ?? false;
+    this.setState((s) => {
+      const cur = !!s.faq[n];
+      const next = multi ? { ...s.faq, [n]: !cur } : (cur ? {} : { [n]: true });
+      return { faq: next };
+    });
+  }
+
+  renderVals() {
+    const st = this.state;
+    const rot = (n) => (st.faq[n] ? 'rotate(45deg)' : 'rotate(0deg)');
+    const MODELS = 4;
+    const i = st.modelIndex;
+    const dot = (n) => (i === n ? '#1b1a18' : 'rgba(27,26,24,0.22)');
+    const goModel = (n) => () => this.setState({ modelIndex: n });
+    const active = (n) => n === i;
+    const j = st.sunIndex;
+    const sActive = (n) => n === j;
+    const sdot = (n) => (j === n ? '#1b1a18' : 'rgba(27,26,24,0.22)');
+    const goSun = (n) => () => this.setState({ sunIndex: n });
+    return {
+      // center the active slide (each slide is 60% wide, so 20% side margin)
+      modelOffset: 'translateX(calc(32% - ' + (i * 36) + '%))',
+      mf0: active(0) ? 'none' : 'blur(2.5px)', mo0: active(0) ? '1' : '0.5', ms0: active(0) ? 'scale(1)' : 'scale(0.9)',
+      mf1: active(1) ? 'none' : 'blur(2.5px)', mo1: active(1) ? '1' : '0.5', ms1: active(1) ? 'scale(1)' : 'scale(0.9)',
+      mf2: active(2) ? 'none' : 'blur(2.5px)', mo2: active(2) ? '1' : '0.5', ms2: active(2) ? 'scale(1)' : 'scale(0.9)',
+      mf3: active(3) ? 'none' : 'blur(2.5px)', mo3: active(3) ? '1' : '0.5', ms3: active(3) ? 'scale(1)' : 'scale(0.9)',
+      nextModel: () => this.setState((s) => ({ modelIndex: (s.modelIndex + 1) % MODELS })),
+      prevModel: () => this.setState((s) => ({ modelIndex: (s.modelIndex - 1 + MODELS) % MODELS })),
+      goModel0: goModel(0), goModel1: goModel(1), goModel2: goModel(2), goModel3: goModel(3),
+      dotBg0: dot(0), dotBg1: dot(1), dotBg2: dot(2), dotBg3: dot(3),
+      sunOffset: 'translateX(calc(32% - ' + (j * 36) + '%))',
+      sf0: sActive(0) ? 'none' : 'blur(2.5px)', so0: sActive(0) ? '1' : '0.5', ss0: sActive(0) ? 'scale(1)' : 'scale(0.9)',
+      sf1: sActive(1) ? 'none' : 'blur(2.5px)', so1: sActive(1) ? '1' : '0.5', ss1: sActive(1) ? 'scale(1)' : 'scale(0.9)',
+      sf2: sActive(2) ? 'none' : 'blur(2.5px)', so2: sActive(2) ? '1' : '0.5', ss2: sActive(2) ? 'scale(1)' : 'scale(0.9)',
+      sf3: sActive(3) ? 'none' : 'blur(2.5px)', so3: sActive(3) ? '1' : '0.5', ss3: sActive(3) ? 'scale(1)' : 'scale(0.9)',
+      nextSun: () => this.setState((s) => ({ sunIndex: (s.sunIndex + 1) % MODELS })),
+      prevSun: () => this.setState((s) => ({ sunIndex: (s.sunIndex - 1 + MODELS) % MODELS })),
+      goSun0: goSun(0), goSun1: goSun(1), goSun2: goSun(2), goSun3: goSun(3),
+      sunDot0: sdot(0), sunDot1: sdot(1), sunDot2: sdot(2), sunDot3: sdot(3),
+      isMobile: st.isMobile,
+      notMobile: !st.isMobile,
+      mobileOpen: st.mobileOpen,
+      toggleMobile: () => this.setState((s) => ({ mobileOpen: !s.mobileOpen })),
+      closeMobile: () => this.setState({ mobileOpen: false }),
+      faqOpen0: !!st.faq[0], faqRot0: rot(0), toggleFaq0: () => this._toggleFaq(0),
+      faqOpen1: !!st.faq[1], faqRot1: rot(1), toggleFaq1: () => this._toggleFaq(1),
+      faqOpen2: !!st.faq[2], faqRot2: rot(2), toggleFaq2: () => this._toggleFaq(2),
+      faqOpen3: !!st.faq[3], faqRot3: rot(3), toggleFaq3: () => this._toggleFaq(3),
+      faqOpen4: !!st.faq[4], faqRot4: rot(4), toggleFaq4: () => this._toggleFaq(4)
+    };
+  }
+}
+</script>
+</body>
+</html>
